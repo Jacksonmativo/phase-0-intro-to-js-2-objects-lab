@@ -1,34 +1,41 @@
-// Initialize an employee object using literal syntax
+// Define the employee object
 const employee = {
-    name: "Alice",
-    streetAddress: "123 Main Street"
+  name: "John Doe",
+  streetAddress: "123 Main St"
+};
+
+// Function to update an employee object non-destructively
+function updateEmployeeWithKeyAndValue(employee, key, value) {
+  return {
+    ...employee,
+    [key]: value
   };
-  
-  // Non-destructively updates the employee object.
-  // Returns a new object with the given key updated to the new value.
-  function updateEmployeeWithKeyAndValue(employee, key, value) {
-    return { ...employee, [key]: value };
-  }
-  
-  // Destructively updates the employee object.
-  // Directly changes the passed-in object and returns it.
-  function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value) {
-    employee[key] = value;
-    return employee;
-  }
-  
-  // Non-destructively deletes a key from the employee object.
-  // Returns a new object without the specified key.
-  function deleteFromEmployeeByKey(employee, key) {
-    const newEmployee = { ...employee };
-    delete newEmployee[key];
-    return newEmployee;
-  }
-  
-  // Destructively deletes a key from the employee object.
-  // Directly removes the property from the passed-in object and returns it.
-  function destructivelyDeleteFromEmployeeByKey(employee, key) {
-    delete employee[key];
-    return employee;
-  }
-  
+}
+
+// Function to update an employee object destructively
+function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value) {
+  employee[key] = value;
+  return employee;
+}
+
+// Function to delete a key from employee object non-destructively
+function deleteFromEmployeeByKey(employee, key) {
+  const newEmployee = { ...employee };
+  delete newEmployee[key];
+  return newEmployee;
+}
+
+// Function to delete a key from employee object destructively
+function destructivelyDeleteFromEmployeeByKey(employee, key) {
+  delete employee[key];
+  return employee;
+}
+
+// Export functions for testing (if using Node.js)
+module.exports = {
+  employee,
+  updateEmployeeWithKeyAndValue,
+  destructivelyUpdateEmployeeWithKeyAndValue,
+  deleteFromEmployeeByKey,
+  destructivelyDeleteFromEmployeeByKey
+};
